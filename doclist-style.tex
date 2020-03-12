@@ -1,0 +1,49 @@
+% !TEX TS-program = ConTeXt (LuaTeX 1.0.9)
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+
+\language[de]
+\setbreakpoints[compound]
+
+\setuphyphenation[method=expanded]
+
+\setuppapersize [A4][A4]
+\setuplayout    [width=middle,  backspace=2in, cutspace=1in, leftmargin=1.5in,
+                 height=middle, topspace=1in, bottomspace=1in]
+
+\setuppagenumbering[location={footer,right}]
+
+\setupheader[text][start]
+\setupfooter[text][start]
+%\setupheadertexts[][\date]
+
+ \setupheadertexts[title][\date]
+ \setuphead[title]
+   [placehead=empty,
+    before=,
+    after=,
+    page=,]
+
+\startxmlsetups xml:doclistb
+    \xmlsetsetup{#1}{*}{-}
+    \xmlsetsetup{#1}{doclist|psdoc|docan}{xml:*}
+\stopxmlsetups
+
+\xmlregistersetup{xml:doclistb}
+
+\startxmlsetups xml:doclist
+  \title{\xmltext{#1}{/pnr} \xmltext{#1}{/pname}}
+  \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:psdoc
+    {\bf \xmltext{#1}{/docnr}}: \xmltext{#1}{/docname}\par
+    {\xmltext{#1}{/docverantwortlich}}  
+    $\Rightarrow$ \xmlconcat{#1}{/docan}{, }
+    \blank
+\stopxmlsetups
+
+\startxmlsetups xml:docan
+   \xmlstripnolines{#1}{}
+   \xmlflush{#1}
+ \stopxmlsetups

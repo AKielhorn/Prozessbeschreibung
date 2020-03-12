@@ -1,0 +1,135 @@
+% !TEX TS-program = ConTeXt (LuaTeX 1.0.9)
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+
+% Aufruf mit
+% context --environment=prozess-style.tex prozess.xml
+
+\startluacode
+settings = {}
+docstruktur = {}
+doclistfile = "doclist.xml"
+
+local striplines = utilities.strings.striplines
+local xmltext = xml.text
+
+doc = xml.load(doclistfile, settings)
+
+for v in xml.collected(doc,"/doclist/psdoc/") do
+ local docnr = striplines(xmltext(v,"/docnr"))
+ local docname = striplines(xmltext(v,"/docname"))
+ -- es kann mehrere DOCAN geben!
+ local docan = striplines(xmltext(v,"/docan"))
+ local docverantwortlich = striplines(xmltext(v,"/docverantwortlich"))
+ docstruktur[docnr]={
+   docname = docname,
+   docan = docan,
+   docverantwortlich = docverantwortlich
+ }
+end
+\stopluacode
+
+\startluacode
+local striplines = utilities.strings.striplines
+local xmltext = xml.text
+function xml.finalizers.tex.PsOutdoc(e)
+    local docnr = striplines(xml.text(e[1],"//docnr"))
+    local c = docstruktur[docnr]
+    context ("\\inmargin{" .. c["docan"] .. " $\\Leftarrow$}" .. "{\\bf " .. docnr .. "} " .. c["docname"])
+end
+\stopluacode
+
+\startluacode
+local striplines = utilities.strings.striplines
+local xmltext = xml.text
+function xml.finalizers.tex.PsIndoc(e)
+    local docnr = striplines(xml.text(e[1],"//docnr"))
+    local c = docstruktur[docnr]
+    context ("\\inmargin{" .. c["docverantwortlich"] .. " $\\Rightarrow$}" .. "{\\bf " .. docnr .. "} " .. c["docname"])
+end
+\stopluacode
+
+\language[de]
+\setbreakpoints[compound]
+
+\setuphyphenation[method=expanded]
+
+\setuppapersize [A4,landscape][A4,landscape]
+\setuplayout    [width=middle,  backspace=2in, cutspace=1in, leftmargin=1.5in,
+                 height=middle, topspace=0.75in, bottomspace=0.75in]
+
+\setuppagenumbering[location={footer,right}]
+
+\setupheader[text][start]
+\setupfooter[text][start]
+%\setupheadertexts[][\date]
+
+ \setupheadertexts[title][\date]
+ \setuphead[title]
+   [placehead=empty,
+    before=,
+    after=,
+    page=,]
+
+\startxmlsetups xml:prozessb
+    \xmlsetsetup{#1}{*}{-}
+    \xmlsetsetup{#1}{prozess|pschritt|psindoc|psoutdoc|aschritt|eschritt}{xml:*}
+\stopxmlsetups
+
+\xmlregistersetup{xml:prozessb}
+
+\startxmlsetups xml:prozess
+  \title{\xmltext{#1}{/pnr} \xmltext{#1}{/pname}}
+%  \setupheadertexts[\bf\xmltext{#1}{/pnr} \xmltext{#1}{/pname}][\date]
+  {\bTABLE
+    \setupTABLE[frame=off]
+    \setupTABLE[offset=1mm]
+    \setupTABLE[c][1][align=right, width=14cm]
+    \setupTABLE[c][2][align=left,  width=6cm]
+    \setupTABLE[c][3][align=right, width=4cm]
+    \bTR \bTD \bfb\xmltext{#1}{/pnr}   \eTD \bTD Version:        \eTD \bTD \bf\xmltext{#1}{/pversion}\eTD \eTR
+    \bTR \bTD \bfb\xmltext{#1}{/pname} \eTD \bTD Verantwortlich: \eTD \bTD \bf\xmltext{#1}{/pverantwortlich}\eTD\eTR
+  \eTABLE}
+  \blank
+  \xmlflush{#1}
+\stopxmlsetups
+
+\startxmlsetups xml:pschritt
+    \inmargin{\bf \xmltext{#1}{../pnr}.\xmltext{#1}{/psnr}}
+    {\bf \xmldoifelse{#1}{/pslang}{\xmltext{#1}{/pslang}}{\xmltext{#1}{/pskurz}}}
+    \blank
+    \xmlflush{#1}
+    \blank
+\stopxmlsetups
+
+\startxmlsetups xml:psindoc
+    \xmlfilter{#1}{./PsIndoc()}
+%    \inmargin{\xmltext{#1}{/docverantwortlich} $\Rightarrow$} {\bf \xmltext{#1}{/docnr}} \xmltext{#1}{/docname}
+    \blank
+\stopxmlsetups
+
+\startxmlsetups xml:psoutdoc
+    \xmlfilter{#1}{./PsOutdoc()}
+%    \inmargin{\xmlconcat{#1}{/docan}{, } $\Leftarrow$}  {\bf \xmltext{#1}{/docnr}} \xmltext{#1}{/docname}
+    \blank
+\stopxmlsetups
+
+%\startxmlsetups xml:docan
+%   \xmlflush{#1}
+% \stopxmlsetups
+
+\startxmlsetups xml:aschritt
+    \color[darkgreen]{
+    \inmargin{\color[darkgreen]{\xmltext{#1}{/asverantwortlich}}}
+    {\xmldoifelse{#1}{/aslang}{\xmltext{#1}{/aslang}}{\xmltext{#1}{/askurz}}}
+    \xmlflush{#1}
+    }
+    \blank
+\stopxmlsetups
+
+\startxmlsetups xml:eschritt
+    \color[red]{
+    {\xmldoifelse{#1}{/eslang}{\xmltext{#1}{/eslang}}{\xmltext{#1}{/eskurz}}}
+    \xmlflush{#1}}
+    \blank
+\stopxmlsetups
