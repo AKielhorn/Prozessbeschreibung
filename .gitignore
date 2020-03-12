@@ -16,3 +16,6 @@ Dante-2020/*
 DTK/*
 Test-buffer/*
 Context Dokumente/*
+Dokumente/*.tex
+*.add
+*.add.spl
