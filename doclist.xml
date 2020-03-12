@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE prozess SYSTEM "doclist.dtd">
+<!-- 
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+-->
+<doclist>
+        <psdoc>
+                <docnr>
+                        PD 3710
+                </docnr>
+                <docname>
+                        DTD.html
+                </docname>
+                <docverantwortlich>
+                        LA
+                </docverantwortlich>
+        </psdoc>
+        <psdoc>
+                <docnr>
+                        PD 3711
+                </docnr>
+                <docname>
+                        Prozessbeschreibung.html
+                </docname>
+                <docverantwortlich>
+                        LA
+                </docverantwortlich>
+        </psdoc>
+        <psdoc>
+                <docnr>
+                        PD 4711
+                </docnr>
+                <docname>
+                        Prozess.xml
+                </docname>
+                <docverantwortlich>
+                        Rechtsabteilung
+                </docverantwortlich>
+                <docan>
+                        PL
+                </docan>
+        </psdoc>
+        <psdoc>
+                <docnr>
+                        PD 4712
+                </docnr>
+                <docname>
+                        Prozess.pdf
+                </docname>
+                <docverantwortlich>
+                        Rechtsabteilung
+                </docverantwortlich>
+                <docan>
+                        Web-Server
+                </docan>
+        </psdoc>
+        <psdoc>
+                <docnr>
+                        PD 4713
+                </docnr>
+                <docname>
+                        Prozess-g.pdf
+                </docname>
+                <docverantwortlich>
+                        Rechtsabteilung
+                </docverantwortlich>
+                <docan>
+                        Web-Server
+                </docan>
+        </psdoc>
+        <psdoc>
+                <docnr>
+                        PD 4722
+                </docnr>
+                <docname>
+                        Dokumentenfluss.pdf
+                </docname>
+                <docverantwortlich>
+                        EDV
+                </docverantwortlich>
+                <docan>
+                        Web-Server
+                </docan>
+        </psdoc>
+</doclist>

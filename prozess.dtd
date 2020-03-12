@@ -1,0 +1,53 @@
+<!-- 
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+-->
+<!-- prozess
+     pnr	Prozessnummer
+     pname	Prozessname
+     pverantwortlich Prozessverantwortlicher
+     pschritt	Prozesschritt, mindestens 1
+     pversion   Versionsnummer (optional)
+-->	
+<!ELEMENT prozess (pnr, pname, pverantwortlich, pversion?, pschritt+)>
+<!ELEMENT pnr (#PCDATA)>
+<!ELEMENT pname (#PCDATA)>
+<!ELEMENT pverantwortlich (#PCDATA)>
+<!ELEMENT pversion (#PCDATA)>
+<!-- pschritt
+     psnr	Prozessschrittnummer
+     pskurz	Prozess Kurzbeschreibung (für Visualisierung)
+     pslang	Prozess Langbeschreibung für tabelarische Form (optional)
+     psindoc    Benötigte Dokumente
+     psoutdoc	Erzeugte Dokumente
+     aschritt	Arbeitsschritt, mindestens 1
+-->
+<!ELEMENT pschritt (psnr, pskurz, pslang?, psindoc*, psoutdoc*, (aschritt, eschritt)+)>
+<!ELEMENT psnr (#PCDATA)>
+<!ELEMENT pskurz (#PCDATA)>
+<!ELEMENT pslang (#PCDATA)>
+<!-- aschritt	Arbeitsschritt (grün)
+     asverantwortlich	Verantwortlicher 
+     askurz	Arbeitsschritt Kurzbeschreibung (für Visualisierung)
+     aslang	Arbeitsschritt Langbeschreibung für tabelarische Form (optional)
+     -->
+<!ELEMENT aschritt (askurz, aslang*, asverantwortlich)>
+<!ELEMENT askurz (#PCDATA)>
+<!ELEMENT aslang (#PCDATA)>
+<!ELEMENT asverantwortlich (#PCDATA)>
+<!-- eschritt	Ergebnisschritt (rot)
+     eskurz	Arbeitsschritt Kurzbeschreibung (für Visualisierung)
+     eslang	Arbeitsschritt Langbeschreibung für tabelarische Form (optional)
+     -->
+<!ELEMENT eschritt (eskurz, eslang*)>
+<!ELEMENT eskurz (#PCDATA)>
+<!ELEMENT eslang (#PCDATA)>
+<!-- psindoc, psoutdoc
+     -->
+<!ELEMENT psindoc (docnr, docname, docverantwortlich)>
+<!ELEMENT psoutdoc (docnr, docname, docverantwortlich, docan+)>
+<!ELEMENT docnr (#PCDATA)>
+<!ELEMENT docname (#PCDATA)>
+<!ELEMENT docverantwortlich (#PCDATA)>
+<!ELEMENT docan(#PCDATA)>
+

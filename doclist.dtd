@@ -1,0 +1,20 @@
+<!-- 
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+-->
+<!-- doclist
+     pnr	Prozessnummer
+     pname	Prozessname
+     pverantwortlich Prozessverantwortlicher
+     pschritt	Prozesschritt, mindestens 1
+     pversion   Versionsnummer (optional)
+-->	
+<!ELEMENT doclist (psdoc*)>
+<!-- psindoc, psoutdoc
+     -->
+<!ELEMENT psdoc (docnr, docname, docverantwortlich, docan+)>
+<!ELEMENT docnr (#PCDATA)>
+<!ELEMENT docname (#PCDATA)>
+<!ELEMENT docverantwortlich (#PCDATA)>
+<!ELEMENT docan(#PCDATA)>
+
