@@ -1,8 +1,18 @@
-*.pdf
 *.aux
 *.bbl
 *.blg
 *.log
 *.tuc
+*.toc
 *.html
-
+*.vrb
+*.nav
+*.out
+*.snm
+*.bcf
+*.run.xml
+*.err
+Dante-2020/*
+DTK/*
+Test-buffer/*
+Context Dokumente/*
