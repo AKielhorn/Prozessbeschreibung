@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!DOCTYPE prozess SYSTEM "prozess.dtd">
+<!-- 
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+-->
+<prozess>
+        <pnr>
+                1.0
+        </pnr>
+        <pname>
+                Prozessbeschreibung
+        </pname>
+        <pverantwortlich>
+                Rechtsabteilung
+        </pverantwortlich>
+        <pversion>
+                1.0
+        </pversion>
+        <pschritt>
+                <psnr>
+                        010
+                </psnr>
+                <pskurz>
+                        Prozess beschreiben
+                </pskurz>
+                <psindoc>
+                        <docnr>
+                                PD 3710
+                        </docnr>
+                        <docname>
+                                DTD.html
+                        </docname>
+                        <docverantwortlich>
+                                LA
+                        </docverantwortlich>
+                </psindoc>
+                <psindoc>
+                        <docnr>
+                                PD 3711
+                        </docnr>
+                        <docname>
+                                Prozessbeschreibung.html
+                        </docname>
+                        <docverantwortlich>
+                                LA
+                        </docverantwortlich>
+                </psindoc>
+                <psoutdoc>
+                        <docnr>
+                                PD 4711
+                        </docnr>
+                        <docname>
+                                Prozess.xml
+                        </docname>
+                        <docverantwortlich>
+                                Rechtsabteilung
+                        </docverantwortlich>
+                        <docan>
+                                PL
+                        </docan>
+                </psoutdoc>
+                <aschritt>
+                        <askurz>
+                                DTD erstellen
+                        </askurz>
+                        <asverantwortlich>
+                                EDV
+                        </asverantwortlich>
+                </aschritt>
+                <eschritt>
+                        <eskurz>
+                                DTD validiert
+                        </eskurz>
+                </eschritt>
+                <aschritt>
+                        <askurz>
+                                XML erstellen
+                        </askurz>
+                        <aslang>
+                                XML erstellen, mit xmllint gegen die DTD validieren.
+                        </aslang>
+                        <asverantwortlich>
+                                MA Rechtsabteilung
+                        </asverantwortlich>
+                </aschritt>
+                <eschritt>
+                        <eskurz>
+                                XML validiert
+                        </eskurz>
+                </eschritt>
+        </pschritt>
+        <pschritt>
+                <psnr>
+                        020
+                </psnr>
+                <pskurz>
+                        Prozess visualisieren
+                </pskurz>
+                <psoutdoc>
+                        <docnr>
+                                PD 4712
+                        </docnr>
+                        <docname>
+                                Prozess.pdf
+                        </docname>
+                        <docverantwortlich>
+                                Rechtsabteilung
+                        </docverantwortlich>
+                        <docan>
+                                Web-Server
+                        </docan>
+                </psoutdoc>
+                <psoutdoc>
+                        <docnr>
+                                PD 4713
+                        </docnr>
+                        <docname>
+                                Prozess-g.pdf
+                        </docname>
+                        <docverantwortlich>
+                                Rechtsabteilung
+                        </docverantwortlich>
+                        <docan>
+                                Web-Server
+                        </docan>
+                </psoutdoc>
+                <aschritt>
+                        <askurz>
+                                Tabellarische Version erstellen und veröffentlichen
+                        </askurz>
+                        <aslang>
+                                Tabellarische Version mit ConTeXt erstellen und auf dem Web-Server veröffentlichen.
+                        </aslang>
+                        <asverantwortlich>
+                                EDV
+                        </asverantwortlich>
+                </aschritt>
+                <eschritt>
+                        <eskurz>
+                                Tabellarische Version auf dem Web-Server.
+                        </eskurz>
+                </eschritt>
+                <aschritt>
+                        <askurz>
+                                Graphische Version erstellen und veröffentlichen.
+                        </askurz>
+                        <aslang>
+                                Das Werkzeug existiert noch nicht.
+                        </aslang>
+                        <asverantwortlich>
+                                EDV
+                        </asverantwortlich>
+                </aschritt>
+                <eschritt>
+                        <eskurz>
+                                Graphische Version auf Webserver
+                        </eskurz>
+                </eschritt>
+        </pschritt>
+        <pschritt>
+                <psnr>
+                        030
+                </psnr>
+                <pskurz>
+                        Dokumentenfluss erstellen
+                </pskurz>
+                <psoutdoc>
+                        <docnr>
+                                PD 4722
+                        </docnr>
+                        <docname>
+                                Dokumentenfluss.pdf
+                        </docname>
+                        <docverantwortlich>
+                                EDV
+                        </docverantwortlich>
+                        <docan>
+                                Web-Server
+                        </docan>
+                </psoutdoc>
+                <aschritt>
+                        <askurz>
+                                Alle XML-Dateien mit system-in.py bearbeiten.
+                        </askurz>
+                        <aslang>
+                                Das Werkzeug existiert noch nicht.
+                        </aslang>
+                        <asverantwortlich>
+                                EDV
+                        </asverantwortlich>
+                </aschritt>
+                <eschritt>
+                        <eskurz>
+                                Jedes Dokument hat genau einen Verantwortlichen und mindestens einen Empfänger.
+                        </eskurz>
+                </eschritt>
+        </pschritt>
+</prozess>
