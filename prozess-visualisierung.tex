@@ -1,0 +1,136 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX TS-program = pdflatex
+% Copyright 2019 Axel Kielhorn
+% Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de
+
+%\documentclass[draft]{article}
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,shapes.symbols}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}%
+
+\begin{document}
+\pagestyle{empty}
+
+\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
+
+\newtcolorbox{pdoku}[2][]{%
+enhanced,
+width=8em,colback=black!5,colframe=black!60,
+nobeforeafter,
+left=0mm, right=0mm,
+boxsep = 2 mm,
+height from = 4 em to 10cm,
+%show bounding box,
+halign title=center,
+attach boxed title to top center={yshift=-\tcboxedtitleheight/2},
+boxed title style={size=small,colback=black!60},
+title={#2},
+#1}
+
+\newtcolorbox{pschritt}[2][]{%
+enhanced,
+width=8em,colback=black!20,colframe=black!75,
+nobeforeafter,
+%left skip=-1mm,
+left=0mm, right=0mm,
+boxsep = 2 mm,
+height from = 4 em to 10cm,
+%show bounding box,
+halign title=center,
+attach boxed title to top center={yshift=-\tcboxedtitleheight/2},
+boxed title style={size=small,colback=black!75},
+title={#2},
+#1}
+
+\newtcolorbox{action}[2][]{%
+enhanced,
+width=8em,colback=green!20,colframe=green!80,
+nobeforeafter,
+%left skip=-1mm,
+left=0mm, right=0mm,
+boxsep = 2 mm,
+height from = 4 em to 10cm,
+%show bounding box,
+halign title=center,
+attach boxed title to top center={yshift=-\tcboxedtitleheight/2},
+boxed title style={size=small,colback=green!80},
+title={#2},
+#1}
+
+\newtcolorbox{ereignis}[1][]{%
+enhanced,
+width=7em,colback=red!20,colframe=red!75,
+nobeforeafter,
+%left skip=-1mm,
+left=0mm, right=0mm,
+boxsep = 2 mm,
+arc is angular,
+arc=4mm,
+height from = 4 em to 10 cm,
+%show bounding box,
+%halign title=center,
+%attach boxed title to top center={yshift=-\tcboxedtitleheight/2},
+%boxed title style={size=small,colback=red!75},
+%title={#2},
+#1}
+
+\begin{tikzpicture}[scale=2, node distance = 4cm, auto]
+% Prozessschritte
+    \node                (p1)  {\begin{pschritt}{1.0.010}{Prozess beschreiben}\end{pschritt}};
+    \node [below of=p1]  (p2)  {\begin{pschritt}{1.0.020}{Prozess visualisieren}\end{pschritt}};
+    \node [below of=p2]  (p3)  {\begin{pschritt}{1.0.030}{Dokumenten- fluss erstellen}\end{pschritt}};
+% PS1
+    \node [right of=p1]  (a1) {\begin{action}{EDV}{DTD erstellen}\end{action}};
+    \node [right of=a1]  (e1) {\begin{ereignis}{DTD validiert}\end{ereignis}};
+    \node [right of=e1]  (a2) {\begin{action}{MA}{XML erstellen}\end{action}};
+    \node [right of=a2]  (e2) {\begin{ereignis}{XML validiert}\end{ereignis}};
+% PS2
+    \node [right of=p2]  (a3) {\begin{action}{EDV}{Tabellarische Version erstelllen}\end{action}};
+    \node [right of=a3]  (e3) {\begin{ereignis}{Tabellarische Form auf Webserver}\end{ereignis}};
+    \node [right of=e3]  (a4) {\begin{action}{EDV}{Graphische Version erstellen}\end{action}};
+    \node [right of=a4]  (e4) {\begin{ereignis}{Graphische Form auf Webserver}\end{ereignis}};
+% PS3
+    \node [right of=p3]  (stop) {\begin{ereignis}{Stop}\end{ereignis}};
+% Doku
+    \node [above left of=p1]   (dokin1)   {\begin{pdoku}{LA}{DTD.html}\end{pdoku}}; 
+    \node [left of=dokin1]     (dokin2)   {\begin{pdoku}{LA}{Prozess- beschreibung.html}\end{pdoku}}; 
+    \node [below left of=p2]   (dokout21) {\begin{pdoku}{$\Rightarrow$ Web-Server}{Prozess-t.pdf}\end{pdoku}}; 
+    \node [left of=dokout21]   (dokout22) {\begin{pdoku}{$\Rightarrow$ Web-Server}{Prozess-g.pdf}\end{pdoku}}; 
+    \node [below left of=p3]   (dokout3) {\begin{pdoku}{$\Rightarrow$  Web-Server}{Doku-fl.xml}\end{pdoku}}; 
+    \node [below left of=p1]   (dokout1) {\begin{pdoku}{$\Rightarrow$ PL}{Prozess.xml}\end{pdoku}}; 
+% Verbindungen
+% PS1
+    \path [line] (p1) -- (a1);
+    \path [line] (a1) -- (e1);
+    \path [line] (e1) -- (a2);
+    \path [line] (a2) -- (e2);
+    \path [line] (e2) -- +(0,-1)  -| (p2);
+    \path [line] (dokin1) |- (p1.170);
+    \path [line] (dokin2) |- (p1.170);
+    \path [line] (p1.200) -| (dokout1);
+% PS2
+    \path [line] (p2) -- (a3);
+    \path [line] (a3) -- (e3);
+    \path [line] (e3) -- (a4);
+    \path [line] (a4) -- (e4);
+    \path [line] (e4) -- +(0,-1)  -| (p3);
+    \path [line] (p2.200) -| (dokout21);
+    \path [line] (p2.200) -| (dokout22);
+% PS3
+    \path [line] (p3) -- (stop);
+    \path [line] (p3.200) -| (dokout3);
+\end{tikzpicture}
+
+
+\end{document}
