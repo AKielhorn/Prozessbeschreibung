@@ -1,0 +1,203 @@
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")
+#+options: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil
+#+options: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t
+#+options: toc:nil todo:t |:t
+#+title: Keine Angst vor DTD
+#+date: <2019-04-13 Sat>
+#+author: Axel Kielhorn
+#+email: axel@axelkielhorn.de
+#+language: de
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 26.1 (Org mode 9.2.3)
+#+options: html-link-use-abs-url:nil html-postamble:auto
+#+options: html-preamble:t html-scripts:t html-style:t
+#+options: html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+subtitle:
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.1 (<a href="https://orgmode.org">Org</a> mode 9.2.3)
+#+LATEX_CLASS: komaarticle
+#+LATEX_CLASS_OPTIONS: 
+#+latex_header:\usepackage{dejavu}
+
+
+* Vorwort
+
+XML-Dateien sind hierarchisch als Baum organisiert. Eine Datei hat eine
+Wurzel und mehrere Verzweigungen. Wie bei einem Stammbaum spricht man
+hier von *Eltern*, *Kindern* und *Geschwistern*.
+
+An XML-Dateien werden unterschiedliche Anforderungen gestellt.
+
+Die niedrigste Anforderung ist das sie *wohlgeformt* ist. Das
+bedeutet, das zu jedem öffnenden Tag auch ein schließendes Tag
+vorhanden ist. Außerdem müssen beide Tags auf der gleichen Ebene sein.
+Wohlgeformtheit lässt sich einfach überprüfen, in der Regel sorgt
+bereits der Editor dafür.
+
+Die nächst höhere Ebene ist die *Gültigkeit* oder *Validität*. Eine
+valide XML-Datei muss den Regeln einer DTD oder eines Schemas folgen.
+Zur Überprüfung werden spezielle Programme wie z. B. =xmllint=
+benutzt.
+Die Validität sagt nur etwas über die Gültigkeit der *Form* aus, sie
+prüft nicht den Inhalt.
+
+Die Überprüfung des Inhalts erfolgt durch einen *Parser*. Dieser kann
+den *Inhalt* der Elemente auf Übereinstimmung mit zulässigen Werten prüfen.  
+
+* Aufbau
+
+Am Beispiel einer Kurzmitteilung (=note=) soll hier der Aufbau einer
+DTD gezeigt werden. Eine =note= hat einen Absender (=from=), einen
+Empfänger (=to=) einen Betreff (=heading=) und einen Text (=body=).
+
+** Elemente
+
+Eine DTD definiert Elemente =ELEMENT= und deren Eigenschaften.
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname Kategory>
+oder
+<!ELEMENT Elementname (Elementinhalt)>
+#+END_SRC
+
+*** Leere Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname EMPTY>
+
+Beispiel:
+
+<!ELEMENT br EMPTY>
+
+XML Beispiel:
+
+<br />
+#+END_SRC
+
+*** Elemente mit Text
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (#PCDATA)>
+
+Beispiel:
+
+<!ELEMENT from (#PCDATA)>
+#+END_SRC
+
+*** Elemente mit beliebigem Inhalt
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname ANY>
+
+Beispiel:
+
+<!ELEMENT note ANY>
+#+END_SRC
+
+
+*** Elemente mit Kindern
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (child1)>
+oder
+<!ELEMENT Elementname (child1, child2,...)>
+
+Beispiel:
+
+<!ELEMENT note (to, from, heading, body)>
+#+END_SRC
+
+Die Elemente müssen in der XML-Datei in genau der Reihenfolge stehen,
+wie sie hier definiert sind.  
+
+Für die Kurzmitteilung werden folgende Elemente benötigt:
+
+#+BEGIN_SRC XML
+<!ELEMENT note (to, from, heading, body)>
+<!ELEMENT to      (#PCDATA)>
+<!ELEMENT from    (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body    (#PCDATA)>
+#+END_SRC
+
+*** Einmalige Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (child-name)>
+
+Beispiel:
+
+<!ELEMENT note (heading)>
+#+END_SRC
+
+Das Element =heading= muss *genau ein Mal* in der Datei vorkommen.
+
+*** Ein oder mehrmalige Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (child-name+)>
+
+Beispiel:
+
+<!ELEMENT note (to+)>
+#+END_SRC
+
+Das Element =to= muss *mindestens ein Mal* in der Datei vorkommen.
+
+*** Null oder mehrmalige Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (child-name*)>
+
+Beispiel:
+
+<!ELEMENT note (body*)>
+#+END_SRC
+
+Das Element =body= darf *beliebig oft* auch *null Mal* auftreten.
+
+*** Null oder einmalige Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT Elementname (child-name?)>
+
+Beispiel:
+
+<!ELEMENT note (body?)>
+#+END_SRC
+
+Das Element *body* darf *null* oder *ein Mal* auftreten.
+
+*** Alternative Elemente
+
+#+BEGIN_SRC XML
+<!ELEMENT note (to, from, header, (message|body))>
+#+END_SRC
+
+Die Elemente =to=, =from= und  =header= müssen vorkommen, außerdem
+muss entweder ein =mesage= oder ein =body= Element vorhanden sein.
+
+
+** Attribute
+
+Attribute sollten sparsam eingesätzt werden, da Elemente einfacher
+verarbeitet werden können.
+
+* Abkürzungen
+
+- DTD :: Document Type Definition (Dokumenttypdefinition)
+- XML :: Extensible Markup Language (Erweiterbare Auszeichnungssprache)
+* Lizenz
+- Copyright 2019 Axel Kielhorn
+- Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de

@@ -1,0 +1,177 @@
+#+title: Prozessbeschreibung
+#+date: 2019-04-13
+#+author: Axel Kielhorn
+#+email: axel@axelkielhorn.de
+#+language: de
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 25.2.1 (Org mode 9.2.2)
+#+options: html-link-use-abs-url:nil html-postamble:t html-preamble:t
+#+options: html-scripts:t html-style:t html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+subtitle:
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="https://orgmode.org">Org</a> mode 9.2.2)
+#+LATEX_CLASS: komaarticle
+#+LATEX_CLASS_OPTIONS: 
+#+latex_header:\usepackage{dejavu}
+#+latex_header_extra:\emergencystretch 3em
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")
+#+options: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil
+#+options: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t
+#+options: toc:nil todo:t |:t
+
+#+begin_export latex
+\maketitle
+#+end_export
+
+* Grundregeln
+
+- Alle Abkürzungen werden erklärt.
+- In der Prozessbeschreibung stehen keine Namen, nur Funktionen.
+  - Zu jeder Funktion muss die zuständige Abteilung Personen benennen.
+  - Die Personen können für jedes Projekt neu benannt werden.
+  - Es sollte mindestens einen Vertreter geben.
+- Lieber viele kurze als eine lange Prozessbeschreibung.
+- Was ist der Unterschied zwischen einer Prozessbeschreibung und einer Arbeitsanweisung?
+  - Gute Frage.
+  - Ich glaube die meisten kennen den Unterschied nicht.
+  - Frag doch mal den Verantwortlichen für das Dokument Management System.
+    - Die Frage ist falsch gestellt: Was ist der Unterschied zwischen
+      der Beschreibung eines *Kernprozesses* und einer Arbeitsanweisung?
+    - Ein Kernprozess hat Schnittstellen zu anderen Abteilungen. Er
+      kann nur in Zusammenarbeit mit den anderen Abteilungen geändert
+      werden.
+    - Eine Arbeitsanweisung regelt die *abteilungsinterne*
+      Abarbeitung. Da sie keine Schnittstellen nach außen hat, kann
+      sie leichter geändert werden.
+
+* Ablagesystem
+
+- Jeder Prozess erhält eine eindeutige Kennzeichnung.
+- Für die Prozessbeschreibungen gibt es einen definierten Ablageort.
+- Das Ablagesystem /sollte/ zu Beginn der Prozessdefinition festgelegt
+  werden, eine nachträgliche Änderung ist aufwendig, da alle
+  Referenzen auf andere Dokumente angepasst werden müssen, siehe
+  Diskussion in Leinemann2014
+- Mögliche Kennzeichnungssysteme sind:
+  - Die Nummer besteht aus dem Prozessabschnitt (klassifizierender Teil)
+    sowie einer fortlaufenden Nummer (identifizierender Teil).
+  - Prozessbeschreibung PB xxx fortlaufend nummeriert.
+  - Nummernvergabe aus den QA-Nummernraum 
+
+* Prozessschritte
+
+- Prozessschritte sind nach außen sichtbar. (Außendarstellung des Prozesses)
+- Prozessschritte sind Container für Arbeitsschritte, sie haben keinen Verantwortlichen.
+- Sie sind fortlaufend nummeriert.
+- Sie benötigen Dokumente.
+- Sie erzeugen Dokumente.
+- Die Form der Dokumente (Textdatei, Tabellenkalkulationsdatei, ERP
+  Objekt) wird nicht durch die Prozessbeschreibung vorgegeben. Dadurch
+  ist es möglich, diese Dokumente bei Bedarf anzupassen, ohne die
+  Prozessbeschreibung zu verändern.
+
+* Arbeitsschritte
+
+- Arbeitsschritte sind abteilungsintern. (Innendarstellung des Prozesses)
+- Sie haben /keine/ Schnittstellen nach außen.
+- Jeder Arbeitsschritt (=aschritt=) führt zu einen Ergebnisschritt
+  (=eschritt=). Liefert ein Arbeitsschritt kein unmittelbares
+  Ergebnis, so ist es kein eigener Arbeitsschritt. Er ist ggf. mit
+  dem folgenden zusammenzufassen.
+- Arbeitsschritte können Verzweigungen enthalten. Verzweigungen sollten
+  sparsam eingesätzt werden. Der aktuelle Workflow unterstützt
+  Verzweigungen noch nicht.
+  - *UND*-Verzweigung: Es müssen gleichzeitig mehrere Arbeitsschritte
+    von *unterschiedlichen Personen* ausgeführt werden, um zum
+    nächsten Ergebnisschritt zu kommen. (Können in der Regel in
+    sequentielle Schritte umgewandelt werden.)
+  - *ODER*-Verzweigung: Es können *unterschiedliche* Arbeitsschritte
+    von *unterschiedlichen Personen* durchgeführt werden, nur einer
+    der Arbeitsschritte ist erforderlich.
+  - *Exklusiv ODER*-Verzweigung: Es muss *genau ein* Schritt
+    ausgeführt werden. Bei den Ausführenden handelt es sich um
+    *unterschiedliche* Personen. (Freigabe durch den Vorgesetzten oder
+    seinen Vertreter erfordert keine Verzweigung.)
+- Jeder Arbeitsschritt hat *einen* Verantwortlichen.
+  - *TL / GRL:* Teamleiter / Gruppenleiter (oder Vertreter)
+  - *MA:* Mitarbeiter der Abteilung
+  - *PV:* Projektverantwortlicher (ohne Personalverantwortung)
+  - *SF:* Special Force: Mitarbeiter mit spezieller Qualifikation
+    (z. B. Schweißschein, Laserbeauftragter, Sachverständiger)
+
+* Dokumente und Aufzeichnungen
+
+- Es werden *keine* Dokumente oder Aufzeichnungen per E-Mail verschickt.
+- Alle Dokumente und Aufzeichnungen werden an einen definierten Ort
+  abgelegt. Alte Versionen der Dokumente werden archiviert.
+
+** Dokumente
+
+- Jede Dokumentart hat eine definierte Struktur. (Dokumentvorlage)
+- Jede Dokumentart hat eine eindeutige Nummer (PD xxx)
+- Jedes Dokument hat *einen* Ersteller. (Verantwortlicher)
+- Alle schnittstellenrelevanten Dokumente werden versioniert.
+- Ein Dokument kann mehrere Empfänger haben.
+- Die Änderung eines Dokumentes erzeugt eine Bringschuld, die
+  Empfänger sind über die Änderung zu informieren.
+
+** Aufzeichnungen
+
+- Aufzeichnungen werden *nicht* versioniert.
+- Jede Aufzeichnungsart hat eine eindeutige Nummer (PA xxx)
+- Aufzeichnungen haben eine Ersteller, können aber mehrere Bearbeiter
+  haben, die zu unterschiedlichen Zeiten dafür verantwortlich sind.
+- Eine Aufzeichnung erzeugt eine Holschuld, der Empfänger muss die
+  Datei auf Veränderungen prüfen.
+
+* Visualisierung
+
+- Kompletter Prozess mit Arbeitsschritten.
+  - Brauchen wir eine graphische Darstellung?
+    - Tabellarische Version ist schlecht verständlich.
+    - Spielplan um "Teamspirit" zu spielen.
+- Kurzprozess mit Schnittstellen.
+- Dokumentenfluss: Ersteller \Rightarrow Empfänger.
+
+* Abkürzungen
+
+- AKI :: Daniel *Axel* Urban Kielhorn
+- EDV :: Elektronische Datenverarbeitung (Arbeitsgruppe im Rechenzentrum)
+- IBN :: Inbetriebnahme
+- ISDN :: Ist sowas denn notwendig?
+- LA :: Lenkungsausschuss
+- MA :: Mitarbeiter der Abteilung
+- PA :: Prozessaufzeichnung
+- PB :: Prozessbeschreibung
+- PD :: Prozessdokument
+- PV :: Projektverantwortlicher (ohne Personalverantwortung)
+- QA :: Quick Access, eine System zu eindeutigen Identifizierung von Dokumenten.
+- SF :: Special Force: Mitarbeiter mit spezieller Qualifikation
+  (z. B. Schweißschein, Laserbeauftragter, Sachverständiger)
+- TL / GRL :: Teamleiter / Gruppenleiter
+
+* Mitgeltende Unterlagen
+
+- Alton2014 :: /Signierrichtlinie/  Diana Alton und Axel Kielhorn,
+  2014 (=Signierrichtlinie.pdf=)
+- Kielhorn2018 :: /Versionieren von schnittstellenrelevanten
+  Dokumenten/ Axel Kielhorn, 2018 (=Versionieren.pdf=)
+- Leineman2014 :: /Ablegen und nicht vergessen/ Anna Leineman und Axel
+  Kielhorn in /Dokumentmanagement Heute/ 4/2014
+- RFC 2119 :: /Key words for use in RFCs to Indicate Requirement
+  Levels/ Network Working Group, 1997
+
+* Lizenz
+- Copyright 2019-2010 Axel Kielhorn
+- Lizenz: CC-BY-SA 4.0 Unported http://creativecommons.org/licenses/by-sa/4.0/deed.de

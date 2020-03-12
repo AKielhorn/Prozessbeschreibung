@@ -1,0 +1,100 @@
+#+title: Spezifikation der Spezifikation
+#+subtitle: 
+#+date: 2019-12-05
+#+author: Axel Kielhorn
+#+email: axel@axelkielhorn.de
+#+language: de
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 25.2.1 (Org mode 9.2.2)
+#+options: html-link-use-abs-url:nil html-postamble:t html-preamble:t
+#+options: html-scripts:t html-style:t html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="https://orgmode.org">Org</a> mode 9.2.2)
+#+LATEX_CLASS: komaarticle
+#+LATEX_CLASS_OPTIONS: 
+#+latex_header:\usepackage{dejavu}
+#+latex_header_extra:\emergencystretch 3em
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")
+#+options: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil
+#+options: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t
+#+options: toc:nil todo:t |:t
+
+#+begin_export latex
+\maketitle
+#+end_export
+
+* Verteiler
+
+- Axel Kielhorn
+- Geschäftsleitung
+- Leitung MKB
+
+* Versionsverlauf
+#+attr_latex: :align rlllp{4cm}l
+| Version |      Datum | Name |          | Änderung                                | Genehmigt |
+|---------+------------+------+----------+-----------------------------------------+-----------|
+|     1.0 | 2007-07-26 | AKI  | 1 -- 10  | Dokument erstellt                       | Chef(AKI) |
+|     2.0 | 2007-07-26 | AKI  |          | Definition ergänzt                      | Chef(AKI) |
+|     3.0 | 2008-01-07 | AKI  | 11 -- 14 | Weitere Punkte eingearbeitet            | Chef(*)   |
+|     4.0 | 2019-12-05 | AKI  | 14 -- 15 | Anpassung an Dokumentablagerichtlinie   | AKI       |
+
+
+* Definitionen
+
+Mit den Verben /müssen/ und /sollen/ werden alle verpflichtenden
+Anforderungen beschrieben.  Mit den Verben /können/ und /dürfen/
+werden alle Wunschforderungen beschrieben.  Die Anforderung endet mit
+dem Zeichen ◊, danach kann eine Erklärung folgen, diese ist nicht
+Bestandteil der Anforderung.
+
+* Mitgeltende Unterlagen
+
+- Alton2014 :: /Signierrichtlinie/  Diana Alton und Axel Kielhorn,
+  2014 (=Signierrichtlinie.pdf=)
+- Kielhorn2018 :: /Versionieren von schnittstellenrelevanten
+  Dokumenten/ Axel Kielhorn, 2018 (=Versionieren.pdf=)
+
+* Anforderungen
+
+	1. Anforderungen /müssen/ nummeriert sein. ◊ Es ist somit
+           möglich, sich auf konkrete Anforderungen zu beziehen.
+	2. Eine Sache /soll/ genau einen Namen haben.
+	3. Ein Name /soll/ ausschließlich für eine Sache verwendet
+           werden.
+	4. Sie /sollen/ kurze Sätze schreiben.
+	5. Jeder Satz /soll/ nur eine Aussage enthalten.
+	6. Das Passive /soll/ vermieden werden.
+	7. Anforderungen /müssen/ begründet werden. ◊ ISSO ist keine
+           Begründung.
+	8. Bilder und Diagramme /können/ verwendet werden. ◊ Diese
+           sollen den Text ergänzen, nicht ersätzen.
+	9. Anforderungen /sollen/ exakt testbar sein. ◊ „Sofort“ ist
+           nicht testbar, „in weniger als 10 s“ ist.
+	10. Werden Anforderungen gestrichen, so bleibt die Nummer
+            frei, sie wird nicht neu vergeben.
+	11. Spezifikationen /sollen/ nur vom verantwortlichen
+            Sachbearbeiter geändert werden. ◊ Dies kann der
+            Originalautor, sein Vertreter oder eine zentrale Stelle
+            sein.
+	12. Spezifikationen /müssen/ eine Versionsnummer erhalten.
+	13. Alle Versionen einer Spezifikation /müssen/ archiviert
+            werden. ◊ Um eine nachträgliche Änderung zu verhindern,
+            /soll/ die Ablage als signierte PDF–Datei erfolgen.
+	14. +Alle Empfänger /müssen/ alle Versionen einer Spezifikation erhalten.+
+      15. Interne Empfänger /müssen/ über die Änderung der
+          Spezifikation per E-Mail informiert werden. Externe
+          Empfänger /müssen/ eine signierte PDF-Datei per E-Mail
+          erhalten und den Empfang bestätigen.
+
+

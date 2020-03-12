@@ -1,0 +1,58 @@
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")
+#+options: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil
+#+options: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t
+#+options: toc:nil todo:t |:t
+#+title: Signierrichtlinie
+#+date: 2014-06-16
+#+author: Diana Alton und Axel Kielhorn
+#+language: de
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 26.3 (Org mode 9.3.6)
+#+latex_class: komaarticle
+#+latex_class_options:
+#+latex_header:\usepackage{dejavu}
+#+latex_header_extra:\emergencystretch 1em
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+
+#+BEGIN_EXPORT latex
+\maketitle
+#+END_EXPORT
+
+* Schlüsselhierarchie
+Sämtliche Schlüssel werden von der zentralen EDV <IT@firmenname>
+erstellt und unterschrieben. Die zentrale EDV archiviert den privaten
+Schlüssel und kann somit auf Verlangen der Geschäftsleitung oder bei
+Vorlage eines Gerichtsbeschlusses auf verschlüsselte Nachrichten
+zugreifen.
+
+Der jeweilige Mitarbeiter /muss/ das Passwort seines privaten Schlüssels
+nach dem Empfang ändern.
+** Ausnahme
+Aktive und ehemalige Mitglieder des Betriebsrates erhalten zusätzlich
+einen Schlüssel des Betriebsrates. Mitarbeiter erhalten auf Antrag
+einen Schlüssel des Betriebsrates um verschlüsselt mit dem Betriebsrat
+zu kommunizieren. Dieser Schlüssel ist im Kommentarfeld mit dem Text
+„Betriebsrat“ gekennzeichnet und darf ausschließlich für die
+Kommunikation mit dem Betriebsrat verwendet werden.  Bei Vorlage eines
+Gerichtsbeschlusses ist der Betriebsrat verpflichtet den geheimen
+Schlüssel herauszugeben.
+** Zusatzschlüssel (Vertragsschlüssel)
+Mitarbeiter, die berechtigt sind Verträge abzuschließen erhalten
+zusätzlich einen Schlüssel zum Signieren von Verträgen. Diese
+Schlüssel sind im Kommentarfeld mit „Vertrag 100 000 €“ oder „Vertrag
+unbegrenzt“ gekennzeichnet. Diese Schlüssel sind nur gültig, wenn sie
+von der Geschäftsleitung signiert wurden.  Vertragsschlüssel werden
+für maximal 1 Jahr signiert. Nach Ablauf dieser Frist ist eine neue
+Signatur erforderlich. Vertragsschlüssel können widerrufen
+werden. Vertragspartner sollten sich bei Vertragsabschluss von der
+aktuellen Gültigkeit des Schlüssels überzeugen.
+* Signieranforderung
+- Verträge :: /müssen/ von allen Vertragspartners signiert werden.
+- Spezifikationen :: /sollten/ von allen Beteiligten signiert werden.
+- Anweisungen :: /sollten/ vom Ersteller signiert werden.
+- Mitteilungen :: werden nicht signiert.

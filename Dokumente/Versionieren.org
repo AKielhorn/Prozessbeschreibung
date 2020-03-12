@@ -1,0 +1,91 @@
+#+title: Versionieren von schnittstellenrelevanten Dokumenten
+#+date: 2019-12-05
+#+author: Axel Kielhorn
+#+email: axel@axelkielhorn.de
+#+language: de
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 25.2.1 (Org mode 9.2.2)
+#+options: html-link-use-abs-url:nil html-postamble:t html-preamble:t
+#+options: html-scripts:t html-style:t html5-fancy:nil tex:t
+#+html_doctype: xhtml-strict
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+subtitle:
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="https://orgmode.org">Org</a> mode 9.2.2)
+#+LATEX_CLASS: komaarticle
+#+LATEX_CLASS_OPTIONS: 
+#+latex_header:\usepackage{dejavu}
+#+latex_header_extra:\emergencystretch 1em
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:{} arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK")
+#+options: date:t e:t email:nil f:t inline:t num:t p:nil pri:nil
+#+options: prop:nil stat:t tags:t tasks:t tex:t timestamp:t title:t
+#+options: toc:nil todo:t |:t
+
+#+begin_export latex
+\maketitle
+#+end_export
+
+* Versionsverlauf 
+#+attr_latex: :align rllp{5cm}l
+| Version |      Datum | Name | Änderung                                | Genehmigt |
+|---------+------------+------+-----------------------------------------+-----------|
+|     0.1 | 2018-10-29 | AKI  | Erste Version als Diskussionsgrundlage. |           |
+|     0.2 | 2018-11-21 | AKI  | Rücknahme von Dokumenten                |           |
+|     1.0 | 2019-12-05 | AKI  | Erste freigegebene Version              | AKI       |
+
+
+* Schnittstellenrelevante Dokumente
+
+Alle schnittstellenrelevanten Dokumente erhalten eine Versionsnummer.
+Schnittstellenrelevante Dokumente sind z. B.
+
+- Spezifikationen
+- Funktionsbeschreibungen
+- Ablaufdiagramme
+
+* Schnittstellenrelevante Aufzeichnungen
+
+Schnittstellenrelevante Aufzeichnungen erhalten keine
+Versionsnummern. Zu den schnittstellenrelevanten Aufzeichnungen
+gehören
+
+- Open Item Listen
+- Besprechungsprotokolle
+
+* CAD-Dokumente
+
+CAD-Dokumente werden gemäß der PDM-Anweisung versioniert.
+
+* Nummernvergabe
+
+Die freigegebene Version eines Dokuments erhält eine Versionsnummer im
+Format X.0. Interne Entwürfe erhalten Versionsnummern im Format X.N.
+
+- Version 0.1 ist der erste Entwurf eines Dokuments.
+- Version 0.2 ist die erste Änderung eines Dokuments
+- Version 1.0 ist die erste freigegebene Version eines Dokuments
+- Version 1.1 ist die erste Überarbeitung eines bereits freigegebenen Dokuments
+- Version 2.0 ist die zweite freigegebene Version
+
+Von allen freigegebenen Versionen ist ein PDF mit der Versionsnummer
+abzuspeichern.
+
+* Rücknahme von Dokumenten
+
+Ist ein Dokument nicht mehr gültig, so ist eine neue Version zu
+erstellen, in der die Rücknahme, wenn möglich mit Angabe von Gründen
+erklärt wird. Mögliche Gründe für eine Rücknahme:
+
+- Dokument durch die technische Entwicklung überholt.
+- Dokument durch Veränderungen in der Verwaltung überholt.
+- Dokument durch ein anderes Dokument ersätzt.
+
