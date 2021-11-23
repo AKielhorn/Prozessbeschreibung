@@ -92,9 +92,9 @@ Bestandteil der Anforderung.
             werden. ◊ Um eine nachträgliche Änderung zu verhindern,
             /soll/ die Ablage als signierte PDF–Datei erfolgen.
 	14. +Alle Empfänger /müssen/ alle Versionen einer Spezifikation erhalten.+
-      15. Interne Empfänger /müssen/ über die Änderung der
-          Spezifikation per E-Mail informiert werden. Externe
-          Empfänger /müssen/ eine signierte PDF-Datei per E-Mail
-          erhalten und den Empfang bestätigen.
+        16. Interne Empfänger /müssen/ über die Änderung der
+            Spezifikation per E-Mail informiert werden. Externe
+            Empfänger /müssen/ eine signierte PDF-Datei per E-Mail
+            erhalten und den Empfang bestätigen.
 
 
