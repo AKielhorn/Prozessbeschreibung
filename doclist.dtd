@@ -16,5 +16,5 @@
 <!ELEMENT docnr (#PCDATA)>
 <!ELEMENT docname (#PCDATA)>
 <!ELEMENT docverantwortlich (#PCDATA)>
-<!ELEMENT docan(#PCDATA)>
+<!ELEMENT docan (#PCDATA)>
 
